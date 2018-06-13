@@ -1,22 +1,21 @@
-class staightSide {
+class straightSide {
   Point start;
   Point end;
-  Point center;
+  Point shapeCenter;
   float derivative;
   
-  staightSide(Point start, Point end, Point center){
+  straightSide(Point start, Point end, Point shapeCenter){
     this.start = start;
     this.end = end;
-    this.center = center;
+    this.shapeCenter = shapeCenter;
     derivative = slope();
   }
-  
-  
+    
   void draw(){
     stroke(#FFFFFF);
     strokeWeight(2);
     line(start.x,start.y, end.x, end.y);
-    ellipse(center.x,center.y,5,5);
+    ellipse(shapeCenter.x,shapeCenter.y,5,5);
   }
   
  
@@ -39,7 +38,16 @@ class staightSide {
   Point sidePoint(Point point){
       float x = (-start.x + start.y + 2*(point.y))/((point.y/point.x)-derivative);
       float y = derivative * x - start.x + start.y;
-      
       return new Point(x,y);
+  }
+  
+  boolean intersect(Point point){
+      
+      float x = (-start.x + start.y + 2*(point.y))/((point.y/point.x)-derivative);
+      float y = derivative * x - start.x + start.y;
+      println(x);
+      println(y);
+      if(y-start.y == derivative*(x-start.x)) return true;
+      return false;
   }
 }

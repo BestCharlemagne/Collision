@@ -10,8 +10,4 @@ class Point{
   String toString(){
     return "(" + x + ", " + y + ")";
   }
-  
-  void draw(){
-    
-  }
 }
